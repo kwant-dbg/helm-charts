@@ -3,12 +3,12 @@ entries:
   velero-backup-operations:
   - apiVersion: v2
     appVersion: "1.0"
-    created: "2026-02-08T17:43:18.275869459Z"
+    created: "2026-02-08T18:06:00.241301162Z"
     description: A Helm chart for triggering Velero Backups
-    digest: 0d1dcf32dd969a017193de0ae1a17886d0b5fb46ba84956e0a5d423eca830922
+    digest: e2037cb29859fbf9d08d2d9add05a52ea8fe76cd73e6e4ab7321b3897ae93db0
     name: velero-backup-operations
     type: application
     urls:
-    - https://kwant-dbg.github.io/helm-charts/charts/velero-backup-operations-1.2.0.tgz
-    version: 1.2.0
-generated: "2026-02-08T17:43:18.274867624Z"
+    - https://kwant-dbg.github.io/helm-charts/charts/velero-backup-operations-1.3.0.tgz
+    version: 1.3.0
+generated: "2026-02-08T18:06:00.240792187Z"
