@@ -1,0 +1,36 @@
+apiVersion: velero.io/v1
+kind: Backup
+metadata:
+  name: {{ include "velero-operations.backupName" . }}
+  namespace: velero
+  labels:
+    {{- include "velero-operations.labels" . | nindent 4 }}
+  annotations:
+    backup.velero.io/created-by: {{ .Values.user | quote }}
+    backup.velero.io/created-at: {{ include "velero-operations.timestamp" . | quote }}
+    {{- if .Values.port.runId }}
+    backup.velero.io/port-run-id: {{ .Values.port.runId | quote }}
+    {{- end }}
+spec:
+  # Included Namespaces
+  includedNamespaces:
+  {{- if .Values.backup.namespaces }}
+    {{- toYaml .Values.backup.namespaces | nindent 4 }}
+  {{- else }}
+    - "*"
+  {{- end }}
+
+  # Excluded Namespaces
+  excludedNamespaces:
+    {{- toYaml .Values.backup.excludedNamespaces | nindent 4 }}
+
+  # S3 Backup Storage Location
+  storageLocation: {{ .Values.backup.storageLocation }}
+
+  #(Time to Live)
+  ttl: {{ .Values.backup.ttl }}
+
+  # Include Cluster Resources
+  includeClusterResources: {{ .Values.backup.includeClusterResources }}
+
+  snapshotVolumes: {{ .Values.backup.snapshotVolumes }}

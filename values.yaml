@@ -1,0 +1,20 @@
+## Default values for backup and restore Helm chart
+
+mode: "backup" ## backup
+
+cluster: "default-cluster" ## MUST BE PASSED BY PORT
+user: "gitops-user"
+
+port:
+  runId: "" ## to be passed by port
+  webhookUrl: "" ## to be passed by port
+
+backup:
+  ttl: "720h" ## time to live for backup
+  namespaces: [] ## Empty for all namespaces
+  excludedNamespaces:
+    - kube-system ## Always Exclude System Namespace
+    - velero
+  includeClusterResources: true
+  storageLocation: default
+  snapshotVolumes: false ## Enable EBS snapshots 
